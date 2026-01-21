@@ -1,1 +1,3 @@
-console.log('RJIC NEHU 2026 Loaded');
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("RJIC 2026 website loaded");
+});
