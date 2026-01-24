@@ -1,45 +1,160 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  line-height: 1.6;
+:root {
+  --primary: #7a1e3a;     /* NEHU maroon */
+  --accent: #d4af37;     /* gold */
+  --light: #f6f5f3;
+  --dark: #2b2b2b;
 }
 
-.navbar {
-  background: #5a1a7a;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+.site-header {
+  background: var(--primary);
   color: #fff;
-  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-flex {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
+.brand h1 {
+  margin: 0;
+  font-size: 1.4rem;
 }
 
-.nav-links li {
-  margin-left: 15px;
+.brand span {
+  font-size: 0.85rem;
+  opacity: 0.85;
 }
 
-.nav-links a {
+.main-nav a {
   color: #fff;
   text-decoration: none;
+  margin-left: 18px;
+  font-weight: 500;
+  padding-bottom: 4px;
 }
 
-.hero {
-  background: #eee;
-  padding: 40px;
-  text-align: center;
+.main-nav a:hover,
+.main-nav a.active {
+  border-bottom: 2px solid var(--accent);
 }
 
-.content {
-  padding: 30px;
+/* Page Content */
+.page {
+  padding: 50px 0;
 }
 
-footer {
-  background: #333;
+.page h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.page h3 {
+  margin-top: 30px;
+  color: #444;
+}
+
+.page ul {
+  padding-left: 18px;
+}
+
+/* Footer */
+.site-footer {
+  background: #2a2a2a;
+  color: #ddd;
+  margin-top: 60px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.site-footer h4 {
   color: #fff;
-  text-align: center;
-  padding: 10px;
+  margin-bottom: 10px;
 }
 
+.footer-bottom {
+  text-align: center;
+  background: #1f1f1f;
+  padding: 12px;
+  font-size: 0.85rem;
+}
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 18px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 260px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  z-index: 999;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Hover for desktop */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Smooth appearance */
+.dropdown-content {
+  animation: fadeDown 0.2s ease-in-out;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
