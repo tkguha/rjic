@@ -158,3 +158,65 @@ body {
   from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+/* ---------- Hamburger Button ---------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* ---------- Mobile Navigation ---------- */
+@media (max-width: 900px) {
+
+  .hamburger {
+    display: flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--primary);
+    width: 100%;
+    flex-direction: column;
+    display: none;
+    padding: 20px 0;
+  }
+
+  .main-nav a,
+  .dropbtn {
+    margin: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  /* Dropdown inside mobile menu */
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    background: #fff;
+    margin: 8px 20px;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.open .dropdown-content {
+    display: block;
+  }
+}
