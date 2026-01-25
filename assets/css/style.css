@@ -82,7 +82,7 @@ body {
   padding-left: 18px;
 }
 .page {
-  padding-bottom: 140px;   /* space so content not hidden by footer */
+  padding-bottom: 95px;   /* space so content not hidden by footer */
 }
 
 /* Footer */
@@ -105,7 +105,7 @@ body {
 .site-footer {
   background: #2a2a2a;
   color: #ddd;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 
   position: fixed;
   bottom: 0;
@@ -117,9 +117,9 @@ body {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  padding: 20px 0;   /* reduced height */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 12px 0;   /* reduced height */
 }
 
 .site-footer h4 {
