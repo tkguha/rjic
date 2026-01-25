@@ -1,9 +1,10 @@
 :root {
-  --primary: #7a1e3a;     /* NEHU maroon */
-  --accent: #d4af37;     /* gold */
-  --light: #f6f5f3;
-  --dark: #2b2b2b;
+  --primary: #1e3a8a;   /* deep navy blue */
+  --accent: #3b82f6;    /* bright blue */
+  --light: #f5f8ff;
+  --dark: #1f2933;
 }
+
 
 * {
   box-sizing: border-box;
