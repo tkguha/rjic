@@ -353,3 +353,20 @@ body {
   }
 }
 
+/* ---------- Countdown Timer ---------- */
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.countdown span {
+  background: rgba(255,255,255,0.15);
+  padding: 10px 14px;
+  border-radius: 4px;
+  min-width: 70px;
+}
