@@ -252,8 +252,8 @@ body {
 
 .hero-banner {
   position: relative;
-  height: 70vh;
-  min-height: 420px;
+  height: 45vh;          /* reduced */
+  min-height: 280px;    /* reduced */
   background: linear-gradient(
       rgba(30, 58, 138, 0.9),
       rgba(59, 130, 246, 0.85)
@@ -263,6 +263,7 @@ body {
   align-items: center;
   color: #fff;
 }
+
 
 .hero-overlay {
   position: absolute;
@@ -350,7 +351,8 @@ body {
   }
 
   .hero-banner {
-    height: 60vh;
+    height: 35vh;
+    min-height: 220px; /* keeps it neat */
   }
 }
 
