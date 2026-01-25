@@ -51,3 +51,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+// Countdown Timer
+
+const eventDate = new Date("February 26, 2026 09:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
+
+if (countdownEl) {
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff < 0) {
+      countdownEl.innerHTML = "Conference Started!";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    countdownEl.innerHTML = `
+      <span>${days}<br>Days</span>
+      <span>${hours}h</span>
+      <span>${minutes}m</span>
+      <span>${seconds}s</span>
+    `;
+  }, 1000);
+}
