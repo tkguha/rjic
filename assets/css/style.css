@@ -81,9 +81,6 @@ body {
 .page ul {
   padding-left: 18px;
 }
-.page {
-  padding-bottom: 95px;   /* space so content not hidden by footer */
-}
 
 /* Footer */
 /* ----- Sticky Footer Layout ----- */
@@ -97,7 +94,7 @@ body {
 /* Main content grows to push footer down */
 .page {
   flex: 1;
-  padding: 50px 0;
+  padding: 50px 0; /*---------------------------------------------------------------------------------------*/
 }
 
 /* ----- Compact Footer ----- */
@@ -106,13 +103,9 @@ body {
   background: #2a2a2a;
   color: #ddd;
   font-size: 0.85rem;
-
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 99;
+  margin-top: auto;
 }
+
 
 
 .footer-grid {
