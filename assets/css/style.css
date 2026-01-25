@@ -246,3 +246,110 @@ body {
     display: block;
   }
 }
+
+/* ---------- Hero Banner ---------- */
+
+.hero-banner {
+  position: relative;
+  height: 70vh;
+  min-height: 420px;
+  background: linear-gradient(
+      rgba(122, 30, 58, 0.85),
+      rgba(122, 30, 58, 0.85)
+    ),
+    url("../images/hero-bg.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  animation: fadeUp 1s ease;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero-tagline {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  opacity: 0.95;
+}
+
+.hero-dates {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: var(--accent);
+}
+
+/* Buttons */
+
+.hero-buttons a {
+  padding: 12px 26px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-secondary {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-secondary:hover {
+  background: #fff;
+  color: var(--primary);
+}
+
+/* Animation */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+  }
+
+  .hero-banner {
+    height: 60vh;
+  }
+}
+
