@@ -82,30 +82,56 @@ body {
 }
 
 /* Footer */
+/* ----- Sticky Footer Layout ----- */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main content grows to push footer down */
+.page {
+  flex: 1;
+  padding: 50px 0;
+}
+
+/* ----- Compact Footer ----- */
+
 .site-footer {
   background: #2a2a2a;
   color: #ddd;
-  margin-top: 60px;
+  margin-top: auto;
+  font-size: 0.9rem;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
-  padding: 40px 0;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px 0;   /* reduced height */
 }
 
 .site-footer h4 {
+  font-size: 1rem;
+  margin-bottom: 6px;
   color: #fff;
-  margin-bottom: 10px;
 }
 
-.footer-bottom {
-  text-align: center;
-  background: #1f1f1f;
-  padding: 12px;
-  font-size: 0.85rem;
+.site-footer p {
+  margin: 4px 0;
+  line-height: 1.5;
 }
+
+/* Bottom strip */
+
+.footer-bottom {
+  background: #1f1f1f;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
 /* Dropdown Menu */
 .dropdown {
   position: relative;
