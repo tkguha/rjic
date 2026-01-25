@@ -31,6 +31,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+
 }
 
 .header-flex {
@@ -100,13 +102,11 @@ body {
 /* ----- Compact Footer ----- */
 
 .site-footer {
-  background: #2a2a2a;
-  color: #ddd;
+  background: var(--primary);   /* deep academic blue */
+  color: #f1f5ff;
   font-size: 0.85rem;
   margin-top: auto;
 }
-
-
 
 .footer-grid {
   display: grid;
@@ -129,7 +129,7 @@ body {
 /* Bottom strip */
 
 .footer-bottom {
-  background: #1f1f1f;
+  background: #162d6b;   /* darker shade of blue */
   padding: 8px;
   text-align: center;
   font-size: 0.8rem;
@@ -300,33 +300,46 @@ body {
 
 .hero-buttons a {
   padding: 12px 26px;
-  border-radius: 4px;
+  border-radius: 6px;
   text-decoration: none;
   margin: 6px;
   font-weight: 600;
   display: inline-block;
-  transition: 0.3s ease;
+
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
+
+/* Primary button */
 
 .btn-primary {
   background: var(--accent);
-  color: #000;
+  color: #fff;
 }
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+  background: #2563eb;   /* slightly deeper blue */
+}
+
+/* Secondary button */
 
 .btn-secondary {
   border: 2px solid #fff;
   color: #fff;
 }
 
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-}
-
 .btn-secondary:hover {
   background: #fff;
   color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
+
 
 /* Animation */
 
@@ -374,4 +387,12 @@ body {
   padding: 10px 14px;
   border-radius: 4px;
   min-width: 70px;
+}
+.brochure-link {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.brochure-link:hover {
+  text-decoration: underline;
 }
