@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Inject header
+  // Load header
   fetch("partials/header.html")
     .then(res => res.text())
     .then(data => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setActiveLink();
     });
 
-  // Inject footer
+  // Load footer
   fetch("partials/footer.html")
     .then(res => res.text())
     .then(data => {
@@ -22,9 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const dropdownBtn = document.querySelector(".dropbtn");
     const dropdown = document.querySelector(".dropdown");
 
-    // Toggle main menu
+    // Toggle mobile menu
     hamburger.addEventListener("click", () => {
       nav.classList.toggle("open");
+
       const expanded = hamburger.getAttribute("aria-expanded") === "true";
       hamburger.setAttribute("aria-expanded", !expanded);
     });
@@ -40,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setActiveLink() {
     const links = document.querySelectorAll(".main-nav a");
-    const current = window.location.pathname;
+    const current = window.location.pathname.split("/").pop();
 
     links.forEach(link => {
-      if (current.includes(link.getAttribute("href"))) {
+      if (link.getAttribute("href") === current) {
         link.classList.add("active");
       }
     });
