@@ -509,3 +509,32 @@ body {
 .visitor-counter img {
   vertical-align: middle;
 }
+
+
+
+/* ---------- QR Styling Enhancements ---------- */
+
+.footer-qr {
+  text-align: center;
+}
+
+.footer-qr h4 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.footer-qr img {
+  width: 95px;
+  padding: 8px;                 /* creates white space */
+  background: #ffffff;         /* WHITE background behind QR */
+  border: 2px solid #e5e7eb;    /* soft border */
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.footer-qr img:hover {
+  transform: scale(1.12);      /* zoom effect */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
+}
