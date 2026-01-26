@@ -526,11 +526,11 @@ body {
 }
 
 .footer-qr img {
-  width: 95px;
-  padding: 8px;                 /* creates white space */
+  width: 120px;
+  padding: 2px;                 /* creates white space */
   background: #ffffff;         /* WHITE background behind QR */
-  border: 2px solid #e5e7eb;    /* soft border */
-  border-radius: 6px;
+  border: 1px solid #e5e7eb;    /* soft border */
+  border-radius: 4px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -538,3 +538,6 @@ body {
   transform: scale(1.12);      /* zoom effect */
   box-shadow: 0 6px 15px rgba(0,0,0,0.35);
 }
+
+
+
