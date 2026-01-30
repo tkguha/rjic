@@ -551,3 +551,9 @@ body {
   margin-top: 8px;
   letter-spacing: 0.3px;
 }
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
