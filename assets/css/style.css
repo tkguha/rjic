@@ -538,6 +538,16 @@ body {
   transform: scale(1.12);      /* zoom effect */
   box-shadow: 0 6px 15px rgba(0,0,0,0.35);
 }
+/* ---------- Dates Updated Badge ---------- */
 
-
-
+.update-badge {
+  display: inline-block;
+  background: #facc15;        /* soft highlight yellow */
+  color: #1e3a8a;             /* deep blue text */
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 14px;
+  margin-top: 8px;
+  letter-spacing: 0.3px;
+}
