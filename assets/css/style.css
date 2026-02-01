@@ -119,10 +119,10 @@ body {
   top: 50%;
   left: 50%;
   width: 120%;
-  height: 120px;
+  height: 110px;
   background: url("../images/footer-pattern.png") center/contain repeat-x;
   transform: translate(-50%, -50%);
-  opacity: 0.25;          /* controls visibility (0.1 – 0.4 best) */
+  opacity: 0.35;          /* controls visibility (0.1 – 0.4 best) */
   pointer-events: none;  /* ensures clicks work normally */
 }
 
