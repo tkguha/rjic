@@ -614,3 +614,29 @@ body {
   height: 100%;
   border: 0;
 }
+.styled-table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:20px;
+}
+
+.styled-table th,
+.styled-table td {
+  border:1px solid #e5e7eb;
+  padding:8px 10px;
+  text-align:left;
+}
+
+.styled-table th {
+  background:#1e3a8a;
+  color:white;
+}
+
+.styled-table tr:nth-child(even){
+  background:#f3f6ff;
+}
+
+#yearFilter{
+  padding:6px 10px;
+  margin-left:8px;
+}
