@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Alumni List | RJIC 2026</title>
+<title>List of Alumni | RJIC 2026</title>
 
 <link rel="stylesheet" href="assets/css/style.css">
 
-<!-- SheetJS library -->
+<!-- Excel reader -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<!-- Load header & footer -->
+<script src="assets/js/main.js" defer></script>
 </head>
 
 <body>
@@ -16,21 +19,29 @@
 
 <main class="page container">
 
-<h2>List of Alumni</h2>
+<h2 class="fade-in">List of Alumni</h2>
 
-<label for="yearFilter"><strong>Select Year of Entry:</strong></label>
-
-<select id="yearFilter">
-  <option value="all">All Years</option>
-</select>
-
-<p id="yearStats" style="margin-top:10px;"></p>
+<div style="margin-bottom:15px;">
+  <label for="yearFilter"><strong>Select Year of Entry:</strong></label>
+  <select id="yearFilter">
+    <option value="all">All Years</option>
+  </select>
+</div>
 
 <div style="overflow-x:auto;">
+
 <table id="alumniTable" class="styled-table">
-<thead></thead>
-<tbody></tbody>
+  <thead>
+    <tr>
+      <th>Sl. No.</th>
+      <th>Name</th>
+      <th>Courses Completed</th>
+      <th>Year of Entry</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
 </table>
+
 </div>
 
 </main>
@@ -38,6 +49,7 @@
 <div id="footer"></div>
 
 <script>
+
 fetch("assets/data/alumni.xlsx")
 .then(res => res.arrayBuffer())
 .then(data => {
@@ -46,56 +58,56 @@ fetch("assets/data/alumni.xlsx")
   const sheet = workbook.Sheets[workbook.SheetNames[0]];
   const rows = XLSX.utils.sheet_to_json(sheet, {header:1});
 
-  const headers = rows[0];
-  const body = rows.slice(1);
+  const dataRows = rows.slice(1); // skip header row
 
-  const thead = document.querySelector("#alumniTable thead");
   const tbody = document.querySelector("#alumniTable tbody");
+  const yearFilter = document.getElementById("yearFilter");
 
-  // Build header
-  let hrow = "<tr>";
-  headers.forEach(h => hrow += `<th>${h}</th>`);
-  hrow += "</tr>";
-  thead.innerHTML = hrow;
+  // Collect unique years (Column D = index 3)
+  const years = [...new Set(dataRows.map(r => r[3]).filter(y => y))].sort();
 
-  // Get unique years (assume Year in Column A)
-  const years = [...new Set(body.map(r => r[0]))];
-
-  const filter = document.getElementById("yearFilter");
-
-  years.forEach(y=>{
-    if(y) filter.innerHTML += `<option value="${y}">${y}</option>`;
+  years.forEach(year => {
+    yearFilter.innerHTML += `<option value="${year}">${year}</option>`;
   });
 
-  function render(data){
-    tbody.innerHTML="";
-    data.forEach(r=>{
-      let row="<tr>";
-      r.forEach(c=> row+=`<td>${c||""}</td>`);
-      row+="</tr>";
-      tbody.innerHTML+=row;
+  function renderTable(list){
+
+    tbody.innerHTML = "";
+
+    list.forEach((r, index) => {
+
+      const row = `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${r[1] || ""}</td>
+          <td>${r[2] || ""}</td>
+          <td>${r[3] || ""}</td>
+        </tr>
+      `;
+
+      tbody.innerHTML += row;
     });
   }
 
-  render(body);
+  // Show all initially
+  renderTable(dataRows);
 
-  filter.addEventListener("change", ()=>{
-    const val = filter.value;
+  // Filter by year
+  yearFilter.addEventListener("change", () => {
 
-    if(val==="all"){
-      render(body);
-      document.getElementById("yearStats").innerText="";
+    const selectedYear = yearFilter.value;
+
+    if(selectedYear === "all"){
+      renderTable(dataRows);
     } else {
-      const filtered = body.filter(r=> r[0]==val);
-      render(filtered);
-
-      // Column E & F → index 4 & 5
-      const countInfo = filtered[0]?.[4] + " | " + filtered[0]?.[5];
-      document.getElementById("yearStats").innerText = "Statistics: " + countInfo;
+      const filtered = dataRows.filter(r => r[3] == selectedYear);
+      renderTable(filtered);
     }
+
   });
 
 });
+
 </script>
 
 </body>
