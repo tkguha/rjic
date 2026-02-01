@@ -239,7 +239,7 @@ body {
   .hamburger {
     display: flex;
   }
-
+/*
   .main-nav {
     position: absolute;
     top: 100%;
@@ -256,7 +256,25 @@ body {
     margin: 10px 20px;
     font-size: 1rem;
   }
+*/
+/* ---------- Main Navigation Cleanup ---------- */
 
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;       /* PREVENT wrapping */
+  gap: 14px;
+}
+
+.main-nav a,
+.dropbtn {
+  font-size: 0.95rem;      /* uniform size */
+  padding: 10px 12px;
+  white-space: nowrap;    /* keep text in single line */
+  font-weight: 500;
+}
+
+  
   .main-nav.open {
     display: flex;
   }
@@ -639,4 +657,7 @@ body {
 #yearFilter{
   padding:6px 10px;
   margin-left:8px;
+}
+.site-logo {
+  max-width: 200px;
 }
