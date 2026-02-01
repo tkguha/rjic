@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Load header
+  /* ================= LOAD HEADER ================= */
+
   fetch("partials/header.html")
     .then(res => res.text())
     .then(data => {
@@ -9,20 +10,24 @@ document.addEventListener("DOMContentLoaded", () => {
       setActiveLink();
     });
 
-  // Load footer
+  /* ================= LOAD FOOTER ================= */
+
   fetch("partials/footer.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("footer").innerHTML = data;
     });
 
+  /* ================= MENU ================= */
+
   function initMenu() {
+
     const hamburger = document.querySelector(".hamburger");
     const nav = document.querySelector(".main-nav");
-    const dropdownBtn = document.querySelector(".dropbtn");
-    const dropdown = document.querySelector(".dropdown");
+    const dropdowns = document.querySelectorAll(".dropdown");
 
-    // Toggle mobile menu
+    /* Toggle hamburger menu */
+
     hamburger.addEventListener("click", () => {
       nav.classList.toggle("open");
 
@@ -30,16 +35,36 @@ document.addEventListener("DOMContentLoaded", () => {
       hamburger.setAttribute("aria-expanded", !expanded);
     });
 
-    // Toggle ABOUT submenu on mobile
-    dropdownBtn.addEventListener("click", (e) => {
-      if (window.innerWidth <= 900) {
-        e.preventDefault();
-        dropdown.classList.toggle("open");
-      }
+    /* Mobile dropdown toggle (ALL dropdowns) */
+
+    dropdowns.forEach(drop => {
+
+      const btn = drop.querySelector(".dropbtn");
+
+      btn.addEventListener("click", (e) => {
+
+        if (window.innerWidth <= 900) {
+
+          e.preventDefault();
+
+          // Close other dropdowns
+          dropdowns.forEach(d => {
+            if (d !== drop) d.classList.remove("open");
+          });
+
+          // Toggle selected
+          drop.classList.toggle("open");
+        }
+      });
+
     });
+
   }
 
+  /* ================= ACTIVE LINK ================= */
+
   function setActiveLink() {
+
     const links = document.querySelectorAll(".main-nav a");
     const current = window.location.pathname.split("/").pop();
 
@@ -48,17 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.add("active");
       }
     });
+
   }
 
 });
 
-// Countdown Timer
+
+/* ================= COUNTDOWN TIMER ================= */
 
 const eventDate = new Date("February 26, 2026 09:00:00").getTime();
 const countdownEl = document.getElementById("countdown");
 
 if (countdownEl) {
+
   setInterval(() => {
+
     const now = new Date().getTime();
     const diff = eventDate - now;
 
@@ -78,23 +107,31 @@ if (countdownEl) {
       <span>${minutes}m</span>
       <span>${seconds}s</span>
     `;
-  }, 1000);
-}
-// Subtle fade-in on scroll
 
-const faders = document.querySelectorAll('.fade-in');
+  }, 1000);
+
+}
+
+
+/* ================= FADE IN ON SCROLL ================= */
+
+const faders = document.querySelectorAll(".fade-in");
 
 const appearOptions = {
   threshold: 0.2
 };
 
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+
   entries.forEach(entry => {
+
     if (!entry.isIntersecting) return;
 
-    entry.target.classList.add('show');
+    entry.target.classList.add("show");
     observer.unobserve(entry.target);
+
   });
+
 }, appearOptions);
 
 faders.forEach(fader => {
