@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Alumni List | RJIC 2026</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- SheetJS library -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+<div id="header"></div>
+
+<main class="page container">
+
+<h2>List of Alumni</h2>
+
+<label for="yearFilter"><strong>Select Year of Entry:</strong></label>
+
+<select id="yearFilter">
+  <option value="all">All Years</option>
+</select>
+
+<p id="yearStats" style="margin-top:10px;"></p>
+
+<div style="overflow-x:auto;">
+<table id="alumniTable" class="styled-table">
+<thead></thead>
+<tbody></tbody>
+</table>
+</div>
+
+</main>
+
+<div id="footer"></div>
+
+<script>
+fetch("assets/data/alumni.xlsx")
+.then(res => res.arrayBuffer())
+.then(data => {
+
+  const workbook = XLSX.read(data, {type:"array"});
+  const sheet = workbook.Sheets[workbook.SheetNames[0]];
+  const rows = XLSX.utils.sheet_to_json(sheet, {header:1});
+
+  const headers = rows[0];
+  const body = rows.slice(1);
+
+  const thead = document.querySelector("#alumniTable thead");
+  const tbody = document.querySelector("#alumniTable tbody");
+
+  // Build header
+  let hrow = "<tr>";
+  headers.forEach(h => hrow += `<th>${h}</th>`);
+  hrow += "</tr>";
+  thead.innerHTML = hrow;
+
+  // Get unique years (assume Year in Column A)
+  const years = [...new Set(body.map(r => r[0]))];
+
+  const filter = document.getElementById("yearFilter");
+
+  years.forEach(y=>{
+    if(y) filter.innerHTML += `<option value="${y}">${y}</option>`;
+  });
+
+  function render(data){
+    tbody.innerHTML="";
+    data.forEach(r=>{
+      let row="<tr>";
+      r.forEach(c=> row+=`<td>${c||""}</td>`);
+      row+="</tr>";
+      tbody.innerHTML+=row;
+    });
+  }
+
+  render(body);
+
+  filter.addEventListener("change", ()=>{
+    const val = filter.value;
+
+    if(val==="all"){
+      render(body);
+      document.getElementById("yearStats").innerText="";
+    } else {
+      const filtered = body.filter(r=> r[0]==val);
+      render(filtered);
+
+      // Column E & F → index 4 & 5
+      const countInfo = filtered[0]?.[4] + " | " + filtered[0]?.[5];
+      document.getElementById("yearStats").innerText = "Statistics: " + countInfo;
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>
