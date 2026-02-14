@@ -102,10 +102,10 @@ if (countdownEl) {
     const seconds = Math.floor((diff / 1000) % 60);
 
     countdownEl.innerHTML = `
-      <span>${days}<br>Days</span>
-      <span>${hours}h</span>
-      <span>${minutes}m</span>
-      <span>${seconds}s</span>
+      <span>${days}<br>D</span>
+      <span>${hours}H</span>
+      <span>${minutes}M/span>
+      <span>${seconds}S</span>
     `;
 
   }, 1000);
