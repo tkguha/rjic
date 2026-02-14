@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* ================= COUNTDOWN TIMER ================= */
 
-const eventDate = new Date("February 26, 2026 09:00:00").getTime();
+const eventDate = new Date("March 24, 2026 10:00:00").getTime();
 const countdownEl = document.getElementById("countdown");
 
 if (countdownEl) {
