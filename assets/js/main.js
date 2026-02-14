@@ -100,13 +100,32 @@ if (countdownEl) {
     const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
-
+/* ==========old script
     countdownEl.innerHTML = `
       <span>${days}<br>D</span>
       <span>${hours}h</span>
       <span>${minutes}m</span>
       <span>${seconds}s</span>
     `;
+============  */
+countdownEl.innerHTML = `
+  <div class="count-box">
+    <span>${days}</span>
+    <small>Days</small>
+  </div>
+  <div class="count-box">
+    <span>${hours}</span>
+    <small>Hours</small>
+  </div>
+  <div class="count-box">
+    <span>${minutes}</span>
+    <small>Minutes</small>
+  </div>
+  <div class="count-box">
+    <span>${seconds}</span>
+    <small>Seconds</small>
+  </div>
+`;
 
   }, 1000);
 
