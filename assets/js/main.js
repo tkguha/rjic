@@ -103,9 +103,9 @@ if (countdownEl) {
 
     countdownEl.innerHTML = `
       <span>${days}<br>D</span>
-      <span>${hours}H</span>
-      <span>${minutes}M/span>
-      <span>${seconds}S</span>
+      <span>${hours}h</span>
+      <span>${minutes}m</span>
+      <span>${seconds}s</span>
     `;
 
   }, 1000);
