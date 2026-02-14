@@ -78,8 +78,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 /* ================= COUNTDOWN TIMER ================= */
+
+const eventDate = new Date("March 24, 2026 10:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
+
+if (countdownEl) {
+
+  // Create structure ONLY ONCE
+  countdownEl.innerHTML = `
+    <div class="count-box">
+      <span id="days"></span>
+      <small>Days</small>
+    </div>
+    <div class="count-box">
+      <span id="hours"></span>
+      <small>Hours</small>
+    </div>
+    <div class="count-box">
+      <span id="minutes"></span>
+      <small>Minutes</small>
+    </div>
+    <div class="count-box">
+      <span id="seconds"></span>
+      <small>Seconds</small>
+    </div>
+  `;
+
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+
+  const interval = setInterval(() => {
+
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+
+    if (diff < 0) {
+      clearInterval(interval);
+      countdownEl.innerHTML = "<strong>Conference Has Commenced</strong>";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    // Update ONLY numbers (no re-rendering)
+    daysEl.textContent = days;
+    hoursEl.textContent = hours;
+    minutesEl.textContent = minutes;
+    secondsEl.textContent = seconds;
+
+  }, 1000);
+
+}
+
+
+
+
+
+
+/* ================= OLD COUNTDOWN TIMER
 
 const eventDate = new Date("March 24, 2026 10:00:00").getTime();
 const countdownEl = document.getElementById("countdown");
@@ -107,7 +169,7 @@ if (countdownEl) {
       <span>${minutes}m</span>
       <span>${seconds}s</span>
     `;
-============  */
+
 countdownEl.innerHTML = `
   <div class="count-box">
     <span>${days}</span>
@@ -130,7 +192,7 @@ countdownEl.innerHTML = `
   }, 1000);
 
 }
-
+============  */
 
 /* ================= FADE IN ON SCROLL ================= */
 
