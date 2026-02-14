@@ -442,3 +442,74 @@ body{
 .count-box:hover {
   transform: translateY(-3px);
 }
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.count-box {
+  background: rgba(255, 255, 255, 0.06);
+  border-top: 3px solid #d4af37; /* subtle gold accent */
+  border-left: 1px solid rgba(255,255,255,0.25);
+  border-right: 1px solid rgba(255,255,255,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding: 18px 26px;
+  border-radius: 4px;
+  min-width: 100px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: dignifiedFade 0.9s ease forwards;
+}
+
+.count-box span {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: "Georgia", serif;
+  color: #ffffff;
+}
+
+.count-box small {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e6e6e6;
+}
+
+.count-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+}
+
+/* Elegant entrance */
+@keyframes dignifiedFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  #countdown {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .count-box {
+    min-width: 85px;
+    padding: 14px 18px;
+  }
+
+  .count-box span {
+    font-size: 1.8rem;
+  }
+}
